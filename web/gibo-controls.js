@@ -169,6 +169,14 @@ function mountGiboControls(board, canvas) {
     printButton.title = '기보 총보 인쇄';
     printButton.onclick = () => printGameRecord(canvas);
     modes.append(printButton);
+    const brand = document.createElement('a');
+    brand.className = 'gibo-corner-mark';
+    brand.href = 'https://eoingti.com/';
+    brand.target = '_blank';
+    brand.rel = 'noopener noreferrer';
+    brand.setAttribute('aria-label', '어잉티 기보플레이어 · 어잉티연구소 홈페이지 (새 창)');
+    brand.innerHTML = '<svg aria-hidden="true" width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 14h14M6 3v14m8-14v14" stroke="#78a6c4"/><circle cx="6" cy="6" r="4" fill="#16273d" stroke="#98c6dc"/><circle cx="14" cy="14" r="4" fill="#e4eff5"/></svg><strong>어잉티</strong><span>기보플레이어</span>';
+    tools.append(brand);
     function playStone() {
         if (!audible) return;
         click.currentTime = 0;

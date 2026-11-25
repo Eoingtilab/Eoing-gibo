@@ -119,3 +119,13 @@
 
 .gibo-info-stone { display:inline-block; box-sizing:border-box; width:14px; height:14px; vertical-align:middle; border:1px solid #9ca6b0; border-radius:50%; background:radial-gradient(circle at 35% 28%,white 30%,#e4e7ea); }
 .gibo-info-stone.black { border-color:#252b30; background:radial-gradient(circle at 35% 28%,#646a70,#161b20 75%); }
+
+.gibo-tools { position:relative; container-type:inline-size; }
+.gibo-tools .gibo-corner-mark { display:inline-flex; align-items:center; justify-self:end; gap:3px; padding:2px 4px; color:#cadce8; font:500 12px/1.35 system-ui,sans-serif; text-decoration:none; white-space:nowrap; }
+.gibo-corner-mark strong { color:#f3f8fb; font-weight:700; }
+.gibo-corner-mark svg { margin-inline-end:2px; }
+.gibo-tools .gibo-corner-mark:hover,.gibo-tools .gibo-corner-mark:focus-visible { color:white; text-decoration:underline; }
+@container (min-width:740px) {
+    .gibo-tools .gibo-corner-mark { position:absolute; inset:auto 8px 8px auto; }
+    .gibo-tools:has([data-mode=review][aria-pressed=true]) .gibo-corner-mark { position:static; }
+}
