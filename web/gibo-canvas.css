@@ -120,11 +120,21 @@
 .gibo-info-stone.black { border-color:#252b30; background:radial-gradient(circle at 35% 28%,#646a70,#161b20 75%); }
 
 .gibo-tools { position:relative; container-type:inline-size; }
-.gibo-tools .gibo-corner-mark { display:inline-flex; align-items:center; justify-self:end; gap:3px; padding:2px 4px; color:#cadce8; font:500 12px/1.35 system-ui,sans-serif; text-decoration:none; white-space:nowrap; }
+.gibo-tools .gibo-corner-mark { display:inline-flex; align-items:center; justify-self:end; gap:3px; padding:2px 4px; color:#cadce8; font:500 11px/1.35 system-ui,sans-serif; text-decoration:none; white-space:nowrap; }
 .gibo-corner-mark strong { color:#f3f8fb; font-weight:700; }
-.gibo-corner-mark svg { margin-inline-end:2px; }
+.gibo-corner-mark svg { width:17px; height:17px; }
 .gibo-tools .gibo-corner-mark:hover,.gibo-tools .gibo-corner-mark:focus-visible { color:white; text-decoration:underline; }
-@container (min-width:740px) {
-    .gibo-tools .gibo-corner-mark { position:absolute; inset:auto 8px 8px auto; }
-    .gibo-tools:has([data-mode=review][aria-pressed=true]) .gibo-corner-mark { position:static; }
+.gibo-tools > .gibo-timeline { grid-area:1/1; }
+.gibo-tools > .gibo-transport { grid-area:2/1; }
+.gibo-tools > .gibo-options { grid-area:3/1; }
+.gibo-tools > .gibo-corner-mark { grid-area:3/1; align-self:center; margin-top:5px; }
+.gibo-tools > .gibo-options { padding-inline:108px; }
+@container (max-width:675px) {
+    .gibo-tools > .gibo-options { padding-inline:0; }
+    .gibo-tools > .gibo-corner-mark { grid-row:2; margin-top:0; }
+    .gibo-tools > .gibo-transport { padding-inline-end:108px; }
+}
+@container (max-width:420px) {
+    .gibo-tools > .gibo-corner-mark strong,.gibo-tools > .gibo-corner-mark span { display:none; }
+    .gibo-tools > .gibo-transport { padding-inline-end:26px; }
 }
