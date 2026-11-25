@@ -116,3 +116,6 @@
     .gibo-game-conditions dl { grid-template-columns:auto minmax(0,1fr) auto minmax(0,1fr); }
     .gibo-game-conditions dl > dd:last-child:nth-child(4n + 2) { grid-column:span 3; }
 }
+
+.gibo-info-stone { display:inline-block; box-sizing:border-box; width:14px; height:14px; vertical-align:middle; border:1px solid #9ca6b0; border-radius:50%; background:radial-gradient(circle at 35% 28%,white 30%,#e4e7ea); }
+.gibo-info-stone.black { border-color:#252b30; background:radial-gradient(circle at 35% 28%,#646a70,#161b20 75%); }
