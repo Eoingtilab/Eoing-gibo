@@ -97,7 +97,7 @@ function mountGiboControls(board, canvas) {
     undo.textContent = '한 수 무르기';
     undo.style.display = 'none';
     undo.onclick = () => { board.undoReview(); undo.disabled = !board.canUndo; };
-    for (const [mode,label,initial] of [['review','놓아보기',false],['number','수순',false],['coord','좌표',true]]) {
+    for (const [mode,label,initial] of [['review','놓기',false],['number','수순',false],['coord','좌표',true]]) {
         const button = document.createElement('button');
         button.type = 'button';
         button.textContent = label;

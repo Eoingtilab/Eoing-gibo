@@ -9,7 +9,7 @@ async function bindAnalysis(player, data, source, canvas) {
     const caption=document.createElement('p');
     const button=document.createElement('button');
     button.type='button';
-    button.textContent='형세보기';
+    button.textContent='형세';
     button.setAttribute('aria-pressed','false');
     let cinema;
     if(detail){
