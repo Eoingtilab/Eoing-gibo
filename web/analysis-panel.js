@@ -26,7 +26,7 @@ async function bindAnalysis(player, data, source, canvas) {
         detail.querySelector('.gibo-stage').append(cinema);
         new ResizeObserver(([entry])=>{
             layout.classList.toggle('is-wide',entry.contentRect.width>=840);
-            layout.classList.toggle('is-three',entry.contentRect.width>=980 && !!info);
+            layout.classList.toggle('is-three',entry.contentRect.width>=860 && !!info);
         }).observe(layout);
     }
     const summary=panel.querySelector('output'), chart=panel.querySelector('svg');

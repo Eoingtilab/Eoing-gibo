@@ -82,3 +82,7 @@
 .gibo-film-caption { display:none; }
 .gibo-detail-player.is-full .gibo-stage { position:relative; }
 .gibo-detail-player.is-full .gibo-film-caption:not(:empty) { display:block; position:absolute; z-index:1; bottom:3%; left:50%; translate:-50% 0; width:max-content; max-width:min(82%,56ch); box-sizing:border-box; padding:.28em .8em; border-radius:4px; background:rgb(10 16 22 / 82%); color:white; text-align:center; text-shadow:0 1px 3px black; font:600 clamp(17px,2.2vw,32px)/1.5 system-ui,sans-serif; pointer-events:none; overflow-wrap:anywhere; }
+
+#viewLayerout.boardView:has(.gibo-review-layout) { width:100%; max-width:none; box-sizing:border-box; padding-inline:clamp(4px,1vw,16px); }
+.gibo-review-layout.is-three { grid-template-columns:minmax(148px,19%) minmax(0,1fr) minmax(172px,20%); column-gap:clamp(12px,1.3vw,24px); }
+.gibo-review-layout.is-three .gibo-analysis-panel { padding:12px; }
