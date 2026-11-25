@@ -136,6 +136,6 @@
 }
 @container (max-width:420px) {
     .gibo-tools > .gibo-corner-mark { grid-row:1; }
-    .gibo-tools > .gibo-timeline { margin-inline-end:108px; }
+    .gibo-tools > .gibo-timeline { margin-inline-end:144px; }
     .gibo-tools > .gibo-transport { padding-inline-end:0; }
 }
