@@ -33,14 +33,15 @@ function eoingtiStoneSprite(size, black) {
 // Main-line SGF playback, including the older federation LI/RD records.
 function readEoingtiRecord(source) {
     const fields = Object.create(null), events = [], branches = [];
-    const comments = [];
+    const comments = [], metadata = Object.create(null);
+    let root = true, nodeHasProperties = false;
     let turn = 0, comment = "";
     function saveComment(){if(comment) comments[turn] = [comments[turn],comment].filter(Boolean).join("\n"); comment="";}
     const tokens = /;|\(|\)|([A-Z]+)\s*((?:\[(?:\\[\s\S]|[^\]\\])*\]\s*)+)/g;
     for (const match of source.matchAll(tokens)) {
         const parent = branches[branches.length - 1];
         if (match[0] === ';') {
-            if(parent?.active) saveComment();
+            if(parent?.active) { saveComment(); if(nodeHasProperties) root=false; }
         } else if (match[0] === '(') {
             branches.push({active: !parent || (parent.active && !parent.hasChild), hasChild:false});
             if (parent) parent.hasChild = true;
@@ -52,6 +53,10 @@ function readEoingtiRecord(source) {
             for (const value of match[2].matchAll(/\[((?:\\[\s\S]|[^\]\\])*)\]/g)) {
                 const text = value[1].replace(/\\(?:\r\n|[\r\n])/g,'').replace(/\\([\s\S])/g,'$1');
                 const key = match[1];
+                nodeHasProperties=true;
+                if(root && text.trim() && !['B','W'].includes(key)){
+                    (metadata[key] ||= []).push(text);
+                }
                 if(key==='B' || key==='W') turn++;
                 if(key==='C'){comment=text;continue;}
                 if (['B','W','AB','AW','AE','PL'].includes(key)) events.push([key,text]);
@@ -62,7 +67,7 @@ function readEoingtiRecord(source) {
     const size = Number(fields.SZ || fields.LI || 19);
     if (!Number.isInteger(size) || size < 2 || size > 26) throw Error('지원하지 않는 바둑판 크기입니다.');
     saveComment();
-    return {fields,events,size,comments};
+    return {fields,events,size,comments,metadata};
 }
 
 class EoingtiGame {

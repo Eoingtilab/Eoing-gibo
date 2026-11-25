@@ -20,6 +20,7 @@ async function openRecord(){
                 c.textContent=text;c.dataset.printInfo=JSON.stringify({title,name_b:fields.PB,name_w:fields.PW,result:fields.RE});
                 new ResizeObserver(()=>{frame.style.height=doc.querySelector('main').offsetHeight+'px';}).observe(doc.querySelector('main'));
                 const player=win.mountEoingtiGibo(c);
+                if(player)win.renderGiboRecordInfo(doc.querySelector('.gibo-record-info'),player.record);
                 if(player)await win.bindAnalysis(player,data,text,doc.querySelector('section'),doc.querySelector('#caption'));
             }catch(error){errorBox.textContent=error.message;errorBox.hidden=false;}
         };
