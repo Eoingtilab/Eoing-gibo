@@ -17,7 +17,12 @@ async function bindAnalysis(player, data, source, canvas) {
         detail.before(layout);
         layout.append(column,panel);
         column.append(detail);
-        panel.append(caption);
+        const subtitles=document.createElement('section');
+        subtitles.className='gibo-subtitles';
+        const heading=document.createElement('h4');
+        heading.textContent='해설 자막';
+        subtitles.append(heading,caption);
+        panel.append(subtitles);
         const info=layout.parentElement.querySelector('.gibo-record-info');
         if(info)layout.append(info);
         column.className='gibo-board-column';

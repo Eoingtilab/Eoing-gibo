@@ -23,6 +23,20 @@ function mountGiboDisplay(app, canvas) {
     const larger = control('확대', lens + '<path d="M10 7v6"/>');
     const expand = 'M3 9V3h6m6 0h6v6m0 6v6h-6m-6 0H3v-6';
     const collapse = 'M9 3v6H3m12-6v6h6m0 6h-6v6m-6 0v-6H3';
+    const subtitles = control('해설 자막', '<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 10a2.4 2.4 0 1 0 0 4m8-4a2.4 2.4 0 1 0 0 4"/>');
+    function setSubtitles(enabled) {
+        player.classList.toggle('captions-off', !enabled);
+        subtitles.setAttribute('aria-pressed', String(enabled));
+        subtitles.title = enabled ? '자막 끄기' : '자막 켜기';
+    }
+    let enabled = true;
+    try { enabled = localStorage.getItem('gibo-captions') !== 'off'; } catch {}
+    setSubtitles(enabled);
+    subtitles.onclick = () => {
+        enabled = !enabled;
+        setSubtitles(enabled);
+        try { localStorage.setItem('gibo-captions', enabled ? 'on' : 'off'); } catch {}
+    };
     const full = control('전체화면', '<path d="' + expand + '"/>');
     const zoomStep = 120;
     let fallback = false;

@@ -86,3 +86,11 @@
 #viewLayerout.boardView:has(.gibo-review-layout) { width:100%; max-width:none; box-sizing:border-box; padding-inline:clamp(4px,1vw,16px); }
 .gibo-review-layout.is-three { grid-template-columns:minmax(148px,19%) minmax(0,1fr) minmax(172px,20%); column-gap:clamp(12px,1.3vw,24px); }
 .gibo-review-layout.is-three .gibo-analysis-panel { padding:12px; }
+
+.gibo-subtitles { margin-top:14px; padding-top:12px; border-top:1px solid #cdd8e3; }
+.gibo-subtitles h4 { margin:0; color:#182b43; font-size:15px; }
+.gibo-subtitles p { margin:6px 0 0; }
+.gibo-subtitles:not(:has(p:not(:empty))), .gibo-review-layout:has(.captions-off) .gibo-subtitles,
+.gibo-detail-player.captions-off.is-full .gibo-film-caption:not(:empty) { display:none; }
+.gibo-detail-player .gibo-options > button { padding-inline:8px; }
+.gibo-detail-player .gibo-display-actions button { padding:0; }
