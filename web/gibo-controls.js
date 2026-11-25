@@ -143,8 +143,8 @@ function mountGiboControls(board, canvas) {
     sound.type = 'button';
     sound.setAttribute('aria-label', '착수음');
     sound.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z"/><path class="sound-muted" d="m16 10 5 5m0-5-5 5"/><path class="sound-on" d="M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
-    const click = new Audio(canvas.dataset.resources + 'stone-click.wav?v=2');
-    click.preload = 'auto';
+    const stones = [0,1,2].map(index => new Audio(canvas.dataset.resources + 'stone-pachi-' + index + '.mp3'));
+    let stoneIndex = 0;
     let audible = false;
     try { audible = localStorage.getItem('gibo-sound') === 'on'; } catch {}
     function updateSound() {
@@ -155,7 +155,7 @@ function mountGiboControls(board, canvas) {
     }
     sound.onclick = () => {
         audible = !audible;
-        if (!audible) click.pause();
+        if (!audible) stones.forEach(stone => stone.pause());
         try { localStorage.setItem('gibo-sound', audible ? 'on' : 'off'); } catch {}
         updateSound();
     };
@@ -170,6 +170,8 @@ function mountGiboControls(board, canvas) {
     modes.append(printButton);
     function playStone() {
         if (!audible) return;
+        const click = stones[stoneIndex];
+        stoneIndex = (stoneIndex + 1 + Math.floor(Math.random() * (stones.length - 1))) % stones.length;
         click.currentTime = 0;
         click.play().catch(() => {});
     }
