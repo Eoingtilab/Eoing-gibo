@@ -21,7 +21,7 @@ async function openRecord(){
                 new ResizeObserver(()=>{frame.style.height=doc.querySelector('main').offsetHeight+'px';}).observe(doc.querySelector('main'));
                 const player=win.mountEoingtiGibo(c);
                 if(player)win.renderGiboRecordInfo(doc.querySelector('.gibo-record-info'),player.record);
-                if(player)await win.bindAnalysis(player,data,text,doc.querySelector('section'),doc.querySelector('#caption'));
+                if(player)await win.bindAnalysis(player,data,text,c);
             }catch(error){errorBox.textContent=error.message;errorBox.hidden=false;}
         };
         frame.allowFullscreen=true;

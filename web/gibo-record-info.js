@@ -16,18 +16,20 @@ function renderGiboRecordInfo(container,record) {
     for(const [label,keys] of groups) {
         const entries=Object.entries(keys).filter(([key])=>data[key]?.length);
         if(!entries.length)continue;
-        const table=document.createElement('table');
-        table.className='table table-bordered table-vertical';
-        const caption=table.createCaption();caption.textContent=label;
-        const tbody=table.createTBody();
-        for(const [key,name] of entries) {
-            const tr=tbody.insertRow(),th=document.createElement('th');
-            th.scope='row';th.textContent=name;tr.append(th);
+        const original=keys===extra || label==='기록 정보';
+        const group=document.createElement(original?'details':'section');
+        const heading=document.createElement(original?'summary':'h4');
+        heading.textContent=label;
+        const fields=document.createElement('dl');
+        for(const [key,name] of entries){
+            const term=document.createElement('dt'), value=document.createElement('dd');
+            term.textContent=name;
             const raw=data[key].join(' · ');
-            const td=tr.insertCell();
-            td.textContent=(key==='TM' && !legacy && /^\d+(?:\.\d+)?$/.test(raw))?raw+'초':raw;
+            value.textContent=(key==='TM' && !legacy && /^\d+(?:\.\d+)?$/.test(raw))?raw+'초':raw;
+            fields.append(term,value);
         }
-        container.append(table);
+        group.append(heading,fields);
+        container.append(group);
     }
-    container.hidden=!container.querySelector('table');
+    container.hidden=container.children.length===1;
 }

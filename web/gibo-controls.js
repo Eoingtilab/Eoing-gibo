@@ -143,7 +143,7 @@ function mountGiboControls(board, canvas) {
     sound.type = 'button';
     sound.setAttribute('aria-label', '착수음');
     sound.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z"/><path class="sound-muted" d="m16 10 5 5m0-5-5 5"/><path class="sound-on" d="M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
-    const click = new Audio(canvas.dataset.resources + 'stone-click.wav');
+    const click = new Audio(canvas.dataset.resources + 'stone-click.wav?v=2');
     click.preload = 'auto';
     let audible = false;
     try { audible = localStorage.getItem('gibo-sound') === 'on'; } catch {}
@@ -163,7 +163,8 @@ function mountGiboControls(board, canvas) {
     modes.append(sound);
     const printButton = document.createElement('button');
     printButton.type = 'button';
-    printButton.textContent = '인쇄';
+    printButton.setAttribute('aria-label', '기보 총보 인쇄');
+    printButton.innerHTML = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3"/><path d="M7 14h10v7H7zM17 11h1"/></svg>';
     printButton.title = '기보 총보 인쇄';
     printButton.onclick = () => printGameRecord(canvas);
     modes.append(printButton);
