@@ -57,9 +57,9 @@
 
 .gibo-record-info { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr)); gap:16px 24px; align-items:start; margin:28px 0; color:#182b43; }
 .gibo-record-info[hidden] { display:none; }
-.gibo-record-info > h3,.gibo-record-info > details { grid-column:1/-1; margin:0; }
+.gibo-record-info > details { grid-column:1/-1; margin:0; }
 .gibo-record-info > section { min-width:0; margin:0; border-block-start:2px solid #203b5e; }
-.gibo-record-info h4,.gibo-record-info summary { margin:0; padding:10px 8px; font-size:1rem; font-weight:650; }
+.gibo-record-info h3,.gibo-record-info summary { margin:0; padding:10px 8px; font-size:1rem; font-weight:650; }
 .gibo-record-info summary { cursor:pointer; border-block-start:1px solid #d5dfe7; }
 .gibo-record-info dl { margin:0; display:grid; grid-template-columns:auto minmax(0,1fr); }
 .gibo-record-info dt,.gibo-record-info dd { margin:0; padding:7px 8px; border-block-start:1px solid #e2e8ef; font-size:max(16px,1rem); line-height:1.5; overflow-wrap:anywhere; }
@@ -98,10 +98,9 @@
 .gibo-review-layout.is-wide .gibo-detail-player:not(.is-full) { width:100%; }
 .gibo-review-layout .gibo-record-info { box-sizing:border-box; gap:8px 18px; padding:14px 16px; border-block:1px solid #d4dfe9; background:#f7f9fb; }
 .gibo-review-layout .gibo-record-info > section { border:0; }
-.gibo-review-layout .gibo-record-info h4 { padding:4px 0 8px; font-size:max(18px,1.1rem); }
+.gibo-review-layout .gibo-record-info h3 { padding:4px 0 8px; font-size:max(18px,1.1rem); }
 .gibo-review-layout .gibo-record-info :is(dt,dd) { padding:6px 8px; }
 
-.gibo-review-layout .gibo-record-info > h3 { font-size:max(22px,1.35rem); }
 .gibo-review-layout .gibo-record-info dd { font-size:max(17px,1.05rem); }
 @container (min-width:1030px) {
     .gibo-record-info:has(> section:nth-of-type(3)) { grid-template-columns:minmax(495px,1.8fr) minmax(138px,.56fr) minmax(320px,1.15fr); }

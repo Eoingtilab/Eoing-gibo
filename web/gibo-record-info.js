@@ -8,14 +8,14 @@ function renderGiboRecordInfo(container,record) {
         ['기록 정보',{AN:'해설자',US:'기록자',SO:'출처',CP:'저작권',AP:'제작 프로그램',CA:'파일 문자셋',FF:'SGF 버전',GM:'게임 종류',ST:'변화도 표시 방식'}]
     ];
     container.replaceChildren();
-    const title=document.createElement('h3');title.textContent='기보 정보';container.append(title);
+    container.setAttribute('aria-label','기보 정보');
     for(const [label,keys] of groups) {
         const entries=Object.entries(keys).filter(([key])=>data[key]?.length);
         if(!entries.length)continue;
         const original=label==='기록 정보';
         const group=document.createElement(original?'details':'section');
         if(label==='대국 조건')group.className='gibo-game-conditions';
-        const heading=document.createElement(original?'summary':'h4');
+        const heading=document.createElement(original?'summary':'h3');
         heading.textContent=label;
         const fields=document.createElement('dl');
         for(const [key,name] of entries){
@@ -34,5 +34,5 @@ function renderGiboRecordInfo(container,record) {
         group.append(heading,fields);
         container.append(group);
     }
-    container.hidden=container.children.length===1;
+    container.hidden=container.children.length===0;
 }
