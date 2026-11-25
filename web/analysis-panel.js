@@ -22,7 +22,10 @@ async function bindAnalysis(player, data, source, canvas) {
         const heading=document.createElement('h4');
         heading.textContent='해설 자막';
         subtitles.append(heading,caption);
-        panel.append(subtitles);
+        const forecast=document.createElement('div');
+        forecast.className='gibo-forecast';
+        forecast.append(...Array.from(panel.children));
+        panel.append(forecast,subtitles);
         const info=layout.parentElement.querySelector('.gibo-record-info');
         if(info)layout.prepend(info);
         column.className='gibo-board-column';

@@ -46,7 +46,7 @@
 
 .gibo-review-layout { container-type:inline-size; display:grid; grid-template-columns:minmax(0,1fr); gap:20px; align-items:start; }
 .gibo-board-column { min-width:0; }
-.gibo-analysis-panel { box-sizing:border-box; width:100%; max-width:600px; margin-inline:auto; padding:16px; border-block-start:2px solid #172d53; background:#f4f7fa; color:#182b43; text-align:start; }
+.gibo-analysis-panel { box-sizing:border-box; width:100%; max-width:600px; margin-inline:auto; display:grid; gap:24px; color:#182b43; text-align:start; }
 .gibo-analysis-panel[hidden],.gibo-analysis-panel [hidden] { display:none; }
 .gibo-analysis-panel output { display:block; margin-block:8px; font-variant-numeric:tabular-nums; }
 .gibo-analysis-panel svg { width:100%; height:72px; background:white; cursor:crosshair; }
@@ -81,10 +81,15 @@
 
 #viewLayerout.boardView:has(.gibo-review-layout) { width:100%; max-width:none; box-sizing:border-box; padding-inline:clamp(4px,1vw,16px); }
 
-.gibo-subtitles { margin-top:14px; padding-top:12px; border-top:1px solid #cdd8e3; }
-.gibo-subtitles h4 { margin:0; color:#182b43; font-size:15px; }
-.gibo-subtitles p { margin:6px 0 0; }
-.gibo-subtitles:not(:has(p:not(:empty))), .gibo-review-layout:has(.captions-off) .gibo-subtitles,
+
+.gibo-forecast { padding:16px; background:#f4f7fa; border-block-start:2px solid #172d53; }
+.gibo-forecast:has(output[hidden]) { display:none; }
+.gibo-analysis-panel .gibo-forecast svg { display:block; height:clamp(100px,14cqi,156px); }
+.gibo-analysis-panel .gibo-subtitles { box-sizing:border-box; min-height:150px; padding:16px 20px 20px; margin:0; border-radius:8px; background:#182b43; color:#fff; display:grid; grid-template-rows:auto 1fr; gap:12px; }
+.gibo-analysis-panel .gibo-subtitles h4 { display:flex; gap:8px; align-items:center; margin:0; color:#c7d9e9; font-size:15px; }
+.gibo-subtitles h4::before { content:"CC"; border:1px solid currentColor; border-radius:3px; padding:1px 3px; font:700 11px/1.1 system-ui,sans-serif; }
+.gibo-analysis-panel .gibo-subtitles p { align-self:center; margin:0; color:#fff; text-align:center; font-size:18px; font-weight:500; line-height:1.6; word-break:keep-all; overflow-wrap:anywhere; }
+.gibo-analysis-panel .gibo-subtitles:not(:has(p:not(:empty))), .gibo-review-layout:has(.captions-off) .gibo-subtitles,
 .gibo-detail-player.captions-off.is-full .gibo-film-caption:not(:empty) { display:none; }
 .gibo-detail-player .gibo-options > button { padding-inline:8px; }
 .gibo-detail-player .gibo-display-actions button { padding:0; }
