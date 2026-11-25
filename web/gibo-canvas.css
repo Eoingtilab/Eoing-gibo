@@ -1,0 +1,44 @@
+/* The reader paints its outer frame inside the canvas. */
+#giboCanvas { border: 0; clip-path: inset(2px); }
+
+
+.gibo-tools { box-sizing:border-box; width:min(100%,600px); margin:4px auto 0; padding:8px 12px; border-radius:10px; background:#182b43; color:#fff; display:grid; gap:5px; font:500 13px/1.2 system-ui,sans-serif; }
+.gibo-timeline,.gibo-transport,.gibo-options { display:flex; align-items:center; }
+.gibo-timeline { gap:12px; }
+.gibo-timeline input[type=range] { flex:1; width:0; min-width:0; height:20px; padding:0; margin:0; border:0; accent-color:#91ceff; cursor:pointer; }
+.gibo-timeline span { color:#edf4fa; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.gibo-transport,.gibo-options { justify-content:center; gap:4px; }
+.gibo-tools button { margin:0; box-sizing:border-box; display:inline-flex; align-items:center; justify-content:center; gap:2px; font:inherit; cursor:pointer; }
+.gibo-transport button { height:36px; min-width:32px; padding:0 4px; background:transparent; border:0; color:white; border-radius:50%; }
+.gibo-transport button:hover { background:#334862; }
+.gibo-transport svg { width:20px; height:20px; }
+.gibo-transport .gibo-play { width:40px; height:40px; margin:0 4px; background:white; color:#182b43; }
+.gibo-play::before { content:""; width:0; height:0; margin-left:3px; border-block:8px solid transparent; border-left:13px solid currentColor; }
+.gibo-play[data-playing=true]::before { width:5px; height:15px; margin:0; border:0; border-inline:4px solid currentColor; box-sizing:content-box; }
+.gibo-options { border-top:1px solid #405066; padding-top:5px; }
+.gibo-options { flex-wrap:wrap; }
+.gibo-options .gibo-wood { width:40px; padding:0; }
+.gibo-wood[data-wood=kaya] .sun,.gibo-wood[data-wood=walnut] .moon { display:none; }
+.gibo-options button { min-height:30px; padding:0 12px; border:1px solid transparent; border-radius:5px; color:#d6e1ed; background:transparent; }
+.gibo-options button[aria-pressed=true] { background:#354e6a; color:white; border-color:#63809d; }
+.gibo-tools button:focus-visible,.gibo-tools input:focus-visible { outline:2px solid #97d4ff; outline-offset:1px; }
+.gibo-tools button:disabled { opacity:.35; cursor:default; }
+
+.gibo-embed { height:100dvh; display:grid; grid-template-rows:minmax(0,1fr) auto; }
+.gibo-embed .gibo-stage { min-height:0; min-width:0; display:grid; place-items:center; }
+.gibo-embed .gibo-tools { width:100%; margin:0; border-radius:0; padding:4px 10px; gap:2px 10px; }
+@media(max-width:489px) {
+ .gibo-embed .gibo-options { padding-top:2px; }
+}
+
+.gibo-detail-player { width:min(100%,var(--reader-size,600px)); margin-inline:auto; }
+.gibo-detail-player .gibo-stage { display:grid; place-items:center; min-width:0; min-height:0; aspect-ratio:1; }
+.gibo-detail-player .gibo-tools { width:100%; }
+.gibo-detail-player .gibo-display-actions { display:inline-flex; align-items:center; border-inline-start:1px solid #52677d; padding-inline-start:4px; }
+.gibo-display-actions button { width:36px; padding:0; }
+.gibo-detail-player.is-large .gibo-tools { padding:10px 16px; font-size:15px; }
+.gibo-detail-player.is-large .gibo-transport button { min-width:40px; height:42px; }
+.gibo-detail-player.is-large .gibo-options button { min-height:36px; }
+.gibo-detail-player.is-full { position:fixed; inset:0; z-index:2147483647; box-sizing:border-box; width:100%; height:100dvh; padding:8px; background:#131d29; display:grid; grid-template-rows:minmax(0,1fr) auto; }
+.gibo-detail-player.is-full .gibo-stage { aspect-ratio:auto; }
+.gibo-detail-player.is-full .gibo-tools { max-width:1000px; }
