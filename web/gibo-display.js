@@ -40,21 +40,35 @@ function mountGiboDisplay(app, canvas) {
     const full = control('전체화면', '<path d="' + expand + '"/>');
     const zoomStep = 120;
     let fallback = false;
+    function availableWidth() {
+        const layout = player.closest('.gibo-review-layout.is-wide');
+        if (!layout) return player.parentElement.clientWidth;
+        const gap = parseFloat(getComputedStyle(layout).columnGap);
+        return Math.floor(layout.clientWidth - gap - 190);
+    }
     function resize() {
         const active = player.classList.contains('is-full');
         const side = Math.floor(Math.min(stage.clientWidth, stage.clientHeight));
         if (side && side !== canvas.width) app.ResizeBoard(side, side);
-        const available = player.parentElement.clientWidth;
+        const available = availableWidth();
         smaller.disabled = active || side <= Math.min(240, available);
         larger.disabled = active || player.clientWidth >= available - 1;
         player.classList.toggle('is-large', side > 600);
     }
     function zoom(direction) {
-        const available = player.parentElement.clientWidth;
+        const available = availableWidth();
         const current = player.clientWidth / zoomStep;
         const next = direction > 0 ? Math.floor(current) + 1 : Math.ceil(current) - 1;
         const desired = Math.min(available, Math.max(240, next * zoomStep));
-        player.style.setProperty('--reader-size', desired + 'px');
+        const layout = player.closest('.gibo-review-layout.is-wide');
+        if (layout) {
+            const gap = parseFloat(getComputedStyle(layout).columnGap);
+            const initial = Math.round((layout.clientWidth - gap) * 2 / 3);
+            // Include the default two-thirds width as a stop in both directions.
+            const crossesInitial = (player.clientWidth - initial) * (desired - initial) <= 0;
+            if (player.clientWidth !== initial && crossesInitial) layout.style.removeProperty('--board-track');
+            else layout.style.setProperty('--board-track', 'min(' + desired + 'px, calc(100% - ' + (190 + gap) + 'px))');
+        } else player.style.setProperty('--reader-size', desired + 'px');
         resize();
     }
     smaller.onclick = () => zoom(-1);

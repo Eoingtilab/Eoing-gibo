@@ -24,14 +24,14 @@ async function bindAnalysis(player, data, source, canvas) {
         subtitles.append(heading,caption);
         panel.append(subtitles);
         const info=layout.parentElement.querySelector('.gibo-record-info');
-        if(info)layout.append(info);
+        if(info)layout.prepend(info);
         column.className='gibo-board-column';
         cinema=document.createElement('div');
         cinema.className='gibo-film-caption';
         detail.querySelector('.gibo-stage').append(cinema);
         new ResizeObserver(([entry])=>{
             layout.classList.toggle('is-wide',entry.contentRect.width>=840);
-            layout.classList.toggle('is-three',entry.contentRect.width>=860 && !!info);
+
         }).observe(layout);
     }
     const summary=panel.querySelector('output'), chart=panel.querySelector('svg');
