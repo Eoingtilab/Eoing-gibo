@@ -9,7 +9,7 @@ function eoingtiStoneSprite(size, black) {
     const x = size * .49, y = size * .47, r = size * .455;
     const body = ctx.createRadialGradient(x+r*.34, y-r*.47, 0, x, y, r);
     const colors = black ? ['#92918a','#444440','#252525','#0e0f10','#050505']
-                         : ['#fffefa','#f7f3e7','#e8e3d5','#c1bbae','#969086'];
+                         : ['#ffffff','#fafafa','#eeeeee','#cdcdcd','#999999'];
     [0,.24,.53,.88,1].forEach((stop,i) => body.addColorStop(stop, colors[i]));
     ctx.shadowColor = 'rgba(15,8,5,.65)';
     ctx.shadowOffsetY = size * .045;
@@ -154,8 +154,8 @@ function mountEoingtiGibo(canvas) {
     let territory=null;
     const current=()=>review?.[review.length-1] || game.frames[index];
     function geometry(){
-        const side=canvas.width,boardSide=side*(coord?.965:1),step=boardSide/size;
-        return {side,boardSide,step,first:step/2};
+        const side=canvas.width,boardSide=side*(coord?.965:1),step=boardSide/(size+0.8);
+        return {side,boardSide,step,first:(boardSide-(size-1)*step)/2};
     }
     function draw() {
         const {side,boardSide,step,first}=geometry();
@@ -234,9 +234,9 @@ function mountEoingtiGibo(canvas) {
     canvas.setAttribute('aria-label','어잉티기보플레이어 바둑판');
     canvas.addEventListener('click',event=>{
         if(!review) return;
-        const rect=canvas.getBoundingClientRect(),{step}=geometry();
-        const x=Math.floor((event.clientX-rect.left)*canvas.width/rect.width/step);
-        const y=Math.floor((event.clientY-rect.top)*canvas.height/rect.height/step);
+        const rect=canvas.getBoundingClientRect(),{step,first}=geometry();
+        const x=Math.round(((event.clientX-rect.left)*canvas.width/rect.width-first)/step);
+        const y=Math.round(((event.clientY-rect.top)*canvas.height/rect.height-first)/step);
         if(x<0||y<0||x>=size||y>=size) return;
         const prev=current(),at=y*size+x;
         const cells=game.place(prev.cells,at,prev.next,index+review.length);
