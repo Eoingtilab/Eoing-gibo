@@ -1,3 +1,4 @@
+/* 어잉티기보플레이어 · 개발: 어잉티연구소 (Eoingtilab) */
 function renderGiboRecordInfo(container,record) {
     const data=record.metadata, legacy=!!(data.LI || data.RD || data.LC || data.LT);
     const groups=[

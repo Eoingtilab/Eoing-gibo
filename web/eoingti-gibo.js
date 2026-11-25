@@ -1,3 +1,4 @@
+/* 어잉티기보플레이어 · 개발: 어잉티연구소 (Eoingtilab) */
 const eoingtiStoneSprites = Object.create(null);
 function eoingtiStoneSprite(size, black) {
     const key = size + ':' + black;
@@ -230,7 +231,7 @@ function mountEoingtiGibo(canvas) {
         undoReview(){if(this.canUndo){review.pop();draw();}},
         ResizeBoard(w,h){canvas.width=w;canvas.height=h;draw();}
     };
-    canvas.setAttribute('aria-label','어잉티 기보 바둑판');
+    canvas.setAttribute('aria-label','어잉티기보플레이어 바둑판');
     canvas.addEventListener('click',event=>{
         if(!review) return;
         const rect=canvas.getBoundingClientRect(),{step}=geometry();

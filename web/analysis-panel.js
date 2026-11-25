@@ -1,3 +1,4 @@
+/* 어잉티기보플레이어 · 개발: 어잉티연구소 (Eoingtilab) */
 async function bindAnalysis(player, data, source, canvas) {
     const {board,record}=player;
     let turns=null, territory=false;

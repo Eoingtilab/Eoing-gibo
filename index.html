@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>어잉티 기보</title>
+<html lang="ko"><meta charset="utf-8"><meta name="author" content="어잉티연구소"><meta name="viewport" content="width=device-width,initial-scale=1"><title>어잉티기보플레이어</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f6f8fa;color:#182b43;font:16px/1.5 system-ui,sans-serif}main{max-width:1140px;margin:auto;padding:16px}header,form{display:flex;align-items:center;gap:12px;flex-wrap:wrap}header{justify-content:space-between;border-bottom:2px solid #182b43}h1{font-size:24px;margin:0 0 8px}form{padding:12px 0}label{font-size:14px}input,select{max-width:100%}iframe{display:block;width:100%;border:0;background:white}
-</style><main><header><h1>어잉티 기보</h1><small>어잉티연구소</small></header>
+</style><main><header><h1>어잉티기보플레이어</h1><small>어잉티연구소</small></header>
 <form><label>SGF 기보 <input type="file" id="sgf" accept=".sgf"></label><label>문자 인코딩 <select id="encoding"><option value="auto">자동</option><option value="utf-8">UTF-8</option><option value="euc-kr">한국어 (CP949)</option><option value="shift_jis">일본어 (Shift JIS)</option><option value="gb18030">중국어 (GB18030)</option></select></label>
 <label>AI 분석 <input type="file" id="analysis" accept=".json"></label></form><p role="alert" id="error" hidden></p><div id="viewer"></div></main>
 <script src="web/gibo-encoding.js"></script><script src="web/open.js"></script></html>

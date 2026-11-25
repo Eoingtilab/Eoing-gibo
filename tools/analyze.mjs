@@ -1,3 +1,4 @@
+/* 어잉티기보플레이어 · 개발: 어잉티연구소 (Eoingtilab) */
 import {spawn} from 'node:child_process';
 import {readFile, writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';

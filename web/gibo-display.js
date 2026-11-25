@@ -1,3 +1,4 @@
+/* 어잉티기보플레이어 · 개발: 어잉티연구소 (Eoingtilab) */
 function mountGiboDisplay(app, canvas) {
     const stage = canvas.parentElement;
     const player = stage.parentElement;

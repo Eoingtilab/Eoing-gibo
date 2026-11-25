@@ -1,3 +1,4 @@
+/* 어잉티기보플레이어 · 개발: 어잉티연구소 (Eoingtilab) */
 // Decode the original bytes before the browser substitutes invalid UTF-8.
 function decodeEoingtiSgf(input, override='auto') {
     const bytes=new Uint8Array(input);

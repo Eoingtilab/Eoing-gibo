@@ -1,3 +1,4 @@
+/* 어잉티기보플레이어 · 개발: 어잉티연구소 (Eoingtilab) */
 function mountGiboControls(board, canvas) {
     const tools = document.createElement('div');
     tools.className = 'gibo-tools';

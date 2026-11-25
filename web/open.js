@@ -1,3 +1,4 @@
+/* 어잉티기보플레이어 · 개발: 어잉티연구소 (Eoingtilab) */
 let version=0, selectedAnalysis;
 async function openRecord(){
     const request=++version, file=sgf.files[0],errorBox=document.querySelector('#error');
