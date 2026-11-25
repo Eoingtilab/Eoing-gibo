@@ -24,7 +24,7 @@ function mountGiboDisplay(app, canvas) {
     const expand = 'M3 9V3h6m6 0h6v6m0 6v6h-6m-6 0H3v-6';
     const collapse = 'M9 3v6H3m12-6v6h6m0 6h-6v6m-6 0v-6H3';
     const full = control('전체화면', '<path d="' + expand + '"/>');
-    let desired = 600;
+    const zoomStep = 120;
     let fallback = false;
     function resize() {
         const active = player.classList.contains('is-full');
@@ -35,14 +35,16 @@ function mountGiboDisplay(app, canvas) {
         larger.disabled = active || player.clientWidth >= available - 1;
         player.classList.toggle('is-large', side > 600);
     }
-    function zoom(delta) {
+    function zoom(direction) {
         const available = player.parentElement.clientWidth;
-        desired = Math.min(available, Math.max(240, player.clientWidth + delta));
+        const current = player.clientWidth / zoomStep;
+        const next = direction > 0 ? Math.floor(current) + 1 : Math.ceil(current) - 1;
+        const desired = Math.min(available, Math.max(240, next * zoomStep));
         player.style.setProperty('--reader-size', desired + 'px');
         resize();
     }
-    smaller.onclick = () => zoom(-120);
-    larger.onclick = () => zoom(120);
+    smaller.onclick = () => zoom(-1);
+    larger.onclick = () => zoom(1);
     function reflectFull() {
         const active = document.fullscreenElement === player || fallback;
         player.classList.toggle('is-full', active);
