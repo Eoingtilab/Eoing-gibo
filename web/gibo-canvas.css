@@ -61,7 +61,7 @@
 .gibo-record-info h4,.gibo-record-info summary { margin:0; padding:10px 8px; font-size:1rem; font-weight:650; }
 .gibo-record-info summary { cursor:pointer; border-block-start:1px solid #d5dfe7; }
 .gibo-record-info dl { margin:0; display:grid; grid-template-columns:auto minmax(0,1fr); }
-.gibo-record-info dt,.gibo-record-info dd { margin:0; padding:7px 8px; border-block-start:1px solid #e2e8ef; font-size:.92rem; line-height:1.5; overflow-wrap:anywhere; }
+.gibo-record-info dt,.gibo-record-info dd { margin:0; padding:7px 8px; border-block-start:1px solid #e2e8ef; font-size:max(16px,1rem); line-height:1.5; overflow-wrap:anywhere; }
 .gibo-record-info dt {color:#51647b; background:#f5f7fa;}
 
 .gibo-analysis-panel output:not([hidden]) { display:flex; justify-content:space-between; gap:8px; margin:14px 0 10px; }
@@ -92,5 +92,11 @@
 .gibo-review-layout.is-wide .gibo-detail-player:not(.is-full) { width:100%; }
 .gibo-review-layout .gibo-record-info { box-sizing:border-box; gap:8px 18px; padding:14px 16px; border-block:1px solid #d4dfe9; background:#f7f9fb; }
 .gibo-review-layout .gibo-record-info > section { border:0; }
-.gibo-review-layout .gibo-record-info h4 { padding:4px 0 6px; }
-.gibo-review-layout .gibo-record-info :is(dt,dd) { padding:4px 6px; }
+.gibo-review-layout .gibo-record-info h4 { padding:4px 0 8px; font-size:max(18px,1.1rem); }
+.gibo-review-layout .gibo-record-info :is(dt,dd) { padding:6px 8px; }
+
+.gibo-review-layout .gibo-record-info > h3 { font-size:max(22px,1.35rem); }
+.gibo-review-layout .gibo-record-info dd { font-size:max(17px,1.05rem); }
+@container (min-width:760px) {
+    .gibo-record-info:has(> section:nth-of-type(3)) { grid-template-columns:minmax(0,1.65fr) minmax(0,1fr) minmax(0,1.15fr); }
+}
