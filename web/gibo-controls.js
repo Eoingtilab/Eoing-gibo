@@ -163,6 +163,7 @@ function mountGiboControls(board, canvas) {
     modes.append(sound);
     const printButton = document.createElement('button');
     printButton.type = 'button';
+    printButton.className = 'gibo-print';
     printButton.setAttribute('aria-label', '기보 총보 인쇄');
     printButton.innerHTML = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3"/><path d="M7 14h10v7H7zM17 11h1"/></svg>';
     printButton.title = '기보 총보 인쇄';

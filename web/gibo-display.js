@@ -22,6 +22,7 @@ function mountGiboDisplay(app, canvas) {
     const lens = '<circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6M7 10h6"/>';
     const smaller = control('축소', lens);
     const larger = control('확대', lens + '<path d="M10 7v6"/>');
+    actions.append(options.querySelector('.gibo-wood'));
     const expand = 'M3 9V3h6m6 0h6v6m0 6v6h-6m-6 0H3v-6';
     const collapse = 'M9 3v6H3m12-6v6h6m0 6h-6v6m-6 0v-6H3';
     const subtitles = control('해설 자막', '<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 10a2.4 2.4 0 1 0 0 4m8-4a2.4 2.4 0 1 0 0 4"/>');
@@ -38,6 +39,7 @@ function mountGiboDisplay(app, canvas) {
         setSubtitles(enabled);
         try { localStorage.setItem('gibo-captions', enabled ? 'on' : 'off'); } catch {}
     };
+    actions.append(options.querySelector('.gibo-print'));
     const full = control('전체화면', '<path d="' + expand + '"/>');
     const zoomStep = 120;
     let fallback = false;
