@@ -197,6 +197,11 @@ function mountGiboControls(board, canvas) {
     });
     board.setCoordinates(true);
     board.setNumbers(false);
-    (canvas.closest('.gibo-stage') || canvas).after(tools);
+    const boardMark = brand.cloneNode(true);
+    boardMark.className = 'gibo-board-mark';
+    const boardEdge = document.createElement('div');
+    boardEdge.className = 'gibo-board-edge';
+    boardEdge.append(boardMark);
+    (canvas.closest('.gibo-stage') || canvas).after(boardEdge, tools);
     sync();
 }
